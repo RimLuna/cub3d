@@ -71,13 +71,4 @@ Scroll Right — 7
 ### Key event controls
 **https://github.com/qst0/ft_libgfx**
 ### I STILL HATE C
-```
-gcc -framework OpenGL -framework AppKit libmlx.a
-```
-#### hooking into events
-```
-mlx_hook(vars.win, 2, 1L<<0, close, &vars);
-```
-we register to the KeyPress event with the according KeyPressMask **1L<<0**. Now whenever we press a key, the window will be closed.
-
 **Now, I guess I will start, maybe**
