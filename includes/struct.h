@@ -1,33 +1,30 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_vec {
+	float		x;
+	float		y;
+} t_vec;
+
+typedef struct s_map {
+	int			w;
+	int			h;
+	int			**val;
+} t_map;
+
+typedef struct s_player {
+	float		x;
+	float		y;
+	t_vec		d;
+	t_vec		p;
+} t_player;
+
 typedef struct  s_mlx {
-	void                            *mlx;
-	void                            *win;
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_player	player;
 }               t_mlx;
 
-typedef struct s_all {
-	double posX;
-	double posY;
-	double dirX;
-	double dirY;
-	double planeX;
-	double planeY;
-	double cameraX;
-	double rayDirX;
-	double rayDirY;
-	double mapX;
-	double mapY;
-	double sideDistX;
-	double sideDistY;
-	double deltaDistX;
-	double deltaDistY;
-	double perpWallDist;
-	int stepX;
-	int stepY;
-	int hit;
-	int side;
-
-} t_all;
 
 #endif

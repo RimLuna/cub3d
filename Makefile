@@ -23,7 +23,8 @@ CUBSRCDIR = ./src
 OBJDIR = ./obj
 #CUB_SRCS := $(shell find ./src -name "*.c")
 CUB_SRCS = start.c\
-			events.c
+			events.c\
+			init.c
 
 OBJ = $(addprefix $(OBJDIR)/,$(CUB_SRCS:.c=.o))
 
