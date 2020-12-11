@@ -7,5 +7,6 @@
 #include "events.h"
 #include "keys.h"
 #include "struct.h"
+#include "err.h"
 
 #endif

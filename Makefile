@@ -1,22 +1,57 @@
-cc := gcc
+NAME = cub3D
+ 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-mlx_weird_flags := -framework OpenGL -framework AppKit
+# all mlx shit
+MLXDIR = ./miniLibX
+MLX_FLAGS = -framework OpenGL -framework AppKit
 
-mlx_lib := ./lib/libmlx.a
-c_warn_flags := -Wall -Wextra -Werror
+MLX_INC = $(MLXDIR)
+MLX_LIB = $(addprefix $(MLXDIR)/,libmlx.a)
 
-cub_include := ./includes/
-cub_srcs := $(shell find . -name "*.c")
+## libft shit
+LIBFTDIR = ./libft
 
-all_includes := -I$(mlx_include) -I$(minirt_include) 
-executable := $(shell find . -name "cub3D")
+LIBFT_LIB = $(addprefix $(LIBFTDIR)/,libft.a)
+LIBFT_INC = $(LIBFTDIR)
+LIBFT_FLAGS = -L $(LIBFTDIR)
 
-cub3D:	$(cub_srcs) $(cub_include)
-	@echo "FUCK THIS SHIT"
-	$(cc) $(all_includes) $(cub_srcs) $(mlx_lib) $(mlx_weird_flags) -o $@
+## cub shit
+CUB_INC = ./includes
+CUBSRCDIR = ./src
+OBJDIR = ./obj
+#CUB_SRCS := $(shell find ./src -name "*.c")
+CUB_SRCS = start.c\
+			events.c
 
-clean: $(executable)
-	rm $<
+OBJ = $(addprefix $(OBJDIR)/,$(CUB_SRCS:.c=.o))
 
-exec:
-	$(shell ./cub3D)
+all: obj $(LIBFT_LIB) $(MLX_LIB) $(NAME)
+
+obj:
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.o:$(CUBSRCDIR)/%.c
+	$(CC) $(CFLAGS) -I $(MLX_INC) -I $(LIBFT_INC) -I $(CUB_INC) -o $@ -c $<
+
+$(LIBFT_LIB):
+	@make -C $(LIBFTDIR)
+
+$(MLX_LIB):
+	@make -C $(MLXDIR)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) $(MLX_FLAGS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+
+clean:
+	rm -rf $(NAME)
+	rm -rf $(OBJDIR)
+	make -C $(LIBFTDIR) clean
+	make -C $(MLXDIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	make -C $(LIBFTDIR) fclean
+
+re: fclean all
