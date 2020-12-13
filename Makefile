@@ -1,11 +1,11 @@
 NAME = cub3D
  
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 # all mlx shit
 MLXDIR = ./miniLibX
-MLX_FLAGS = -framework OpenGL -framework AppKit
+#MLX_FLAGS = -framework OpenGL -framework AppKit
 
 MLX_INC = $(MLXDIR)
 MLX_LIB = $(addprefix $(MLXDIR)/,libmlx.a)
@@ -24,7 +24,7 @@ OBJDIR = ./obj
 #CUB_SRCS := $(shell find ./src -name "*.c")
 CUB_SRCS = start.c\
 			events.c\
-			init.c
+			init_things.c\
 
 OBJ = $(addprefix $(OBJDIR)/,$(CUB_SRCS:.c=.o))
 

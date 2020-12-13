@@ -3,9 +3,13 @@
 
 # include "cub3d.h"
 
-t_mlx			*mlxdel(t_mlx *mlx);
-t_mlx			*my_init_mlx(void);
 
-void			init_player(t_player *player);
+//t_mlx			*mlxdel(t_mlx *mlx);
+//t_mlx			*my_init_mlx(void);
+
+void            init_config(t_conf *conf);
+void        	zero_vec(t_vec *vector);
+void		    init(t_cub *cub);
+
 #endif
 
