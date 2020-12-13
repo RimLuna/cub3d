@@ -51,8 +51,18 @@ int             main(int argc, char *argv[])
 	t_cub	cub;
 
 	if (argc < 2)
+<<<<<<< HEAD
 		return (err_err("error: not enough arguments\nusage: ./cub3D [map]\n"));
 	init(&cub);
 	if (parse_file(argv[1], &cub) == 0)
 		return (err_err("error: parsing map file went wrong.\n"));
 }
+=======
+		return (err_err("error: not enough arguments\nusage: ./cub3D [map]"));
+	if ((mlx = my_init_mlx()) == NULL)
+		return (err_err("error: couldn\'t init mlx\n"));
+	if ((map = parse_map(argv[1])) == NULL)
+		return (err_err("exited from parsing map\n"));
+	mlx->map = map;
+}
+>>>>>>> 8a63a6797fd1bc4260635016d7182afda7434aff
