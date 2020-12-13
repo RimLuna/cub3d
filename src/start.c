@@ -35,7 +35,7 @@ int             main(int argc, char *argv[])
 	t_mlx *mlx;
 
 	if (argc < 2)
-		return (err_err("error: not enough arguments\nusage: ./wolf3d [map]"));
+		return (err_err("error: not enough arguments\nusage: ./cub3D [map]"));
 	if ((mlx = my_init_mlx()) == NULL)
 		return (err_err("error: couldn\'t init mlx\n"));
 	if ((map = parse_map(argv[1])) == NULL)
