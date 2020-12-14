@@ -134,5 +134,11 @@ int		parse_file(char *file, t_conf *conf)
 		r = get_params(conf, line, &map_buf);
 		free(line);
 	}
+	while(map_buf)
+	{
+		ft_putstr(map_buf->str);
+		write(1, "\n", 1);
+		map_buf = map_buf->next;
+	}
 	return (1);
 }
