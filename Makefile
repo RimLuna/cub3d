@@ -25,6 +25,9 @@ OBJDIR = ./obj
 CUB_SRCS = start.c\
 			events.c\
 			init_things.c\
+			ft_buf_all.c\
+			parse.c\
+			get_things.c
 
 OBJ = $(addprefix $(OBJDIR)/,$(CUB_SRCS:.c=.o))
 

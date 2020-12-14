@@ -3,6 +3,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdint.h>
+
+# define PTR_CAST(a)	(void*)((uintptr_t)(a))
 
 typedef struct	s_list
 {
@@ -11,7 +14,14 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+int     is_in(char c, char const *set);
+
+char	*ft_strdup(char const *s1);
+
 void			ft_putstr(const char *s);
+int     ft_atoi(char const *str);
+
+char    *ft_substr(char const *s, int start, int len);
 
 size_t			ft_strlen(const char *s);
 

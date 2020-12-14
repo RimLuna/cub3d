@@ -1,4 +1,4 @@
-#include "init_del.h"
+#include "cub3d.h"
 
 void            init_config(t_conf *conf)
 {
@@ -12,6 +12,12 @@ void            init_config(t_conf *conf)
     conf->columns = 0;
     conf->rotate_speed = 0;
     conf->move_speed = 0;
+    i = -1;
+    while (++i < TEXTURES)
+        conf->text_path[i] = NULL;
+    i = -1;
+    while (++i < LAST)
+        conf->keys[i] = 0;
     i = -1;
     while (i++ < TEXTURES)
         conf->text_path[i] = NULL;
