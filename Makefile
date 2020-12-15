@@ -27,7 +27,8 @@ CUB_SRCS = start.c\
 			init_things.c\
 			ft_buf_all.c\
 			parse.c\
-			get_things.c
+			get_things.c\
+			check_map.c
 
 OBJ = $(addprefix $(OBJDIR)/,$(CUB_SRCS:.c=.o))
 

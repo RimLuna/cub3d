@@ -40,11 +40,17 @@ t_buf 	*ft_buf_add(t_buf **buf, char *str)
 
 t_buf			*ft_buf_last(t_buf *buf)
 {
+	t_buf *tmp;
+
 	if (!buf)
 		return (NULL);
 	while (buf->next)
+	{
+		tmp = buf;
 		buf = buf->next;
-	return (buf);
+	}
+	ft_putstr(tmp->str);
+	return (tmp);
 }
 
 int				ft_buf_clear(t_buf **buf)

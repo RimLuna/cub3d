@@ -20,6 +20,7 @@ int             main(int argc, char *argv[])
 	if (argc < 2)
 		return (err_err("error: not enough arguments\nusage: ./cub3D [map]\n"));
 	init(&cub);
-	if (parse_file(argv[1], &cub.conf) == 0)
+	if (!parse_file(argv[1], &cub.conf))
 		return (err_err("error: parsing map file went wrong.\n"));
+	return (EXIT_SUCCESS);
 }
