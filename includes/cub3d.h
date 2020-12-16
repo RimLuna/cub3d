@@ -36,12 +36,5 @@ int		parse_dim(t_conf *conf, char const *line);
 int		parse_text(t_conf *conf, int key, char const *line);
 int		parse_file(char *file, t_conf *conf);
 
-int		count_columns(char const *line);
-int		check_top_bottom_borders(t_buf *map_buffer);
-int		is_map_valid(t_conf *conf, t_buf *map_buf);
-int		check_left_right_borders(t_buf *map_buf);
-
-int		parse_map(t_conf *conf, t_buf *map_buf);
-
-int		map_cpy(t_conf *conf, t_buf *map_buf, int *map);
+int 	parse_map(t_conf *conf, t_buf *map_buf);
 #endif

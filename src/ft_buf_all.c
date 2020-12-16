@@ -23,6 +23,10 @@ t_buf 	*ft_buf_add(t_buf **buf, char *str)
 		return (NULL);
 	if (!(new = (t_buf*)malloc(sizeof(*new))))
 		return (0);
+	//ft_putstr("\nFROM BUF\n");
+	//ft_putstr(str);
+	//ft_putstr("\nFROM BUF\n");
+
 	new->str = str;
 	new->next = NULL;
 	if (!*buf)
@@ -49,8 +53,8 @@ t_buf			*ft_buf_last(t_buf *buf)
 		tmp = buf;
 		buf = buf->next;
 	}
-	ft_putstr(tmp->str);
-	return (tmp);
+	//ft_putstr(tmp->str);
+	return (tmp->next);
 }
 
 int				ft_buf_clear(t_buf **buf)
