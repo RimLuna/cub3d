@@ -126,8 +126,69 @@ int		check_ext(char *file)
 	return (!ft_strcmp(file + len - ext_len, ".cub"));
 }
 
+int		skip_spaces(char *s)
+{
+	int i;
+
+	i = 0;
+	while ((s[i] == ' ' || s[i] == '\t'))
+		i++;
+	return (i);
+}
+
+int		skip_spaces_back(char *s)
+{
+	int i;
+
+	i = ft_strlen(s) - 1;
+	while ((s[i] == ' ' || s[i] == '\t') && i > 0)
+		i--;
+	return (i);
+}
+int 	check_map_chars(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		if (!is_in(s[i++], " 012NSEW\t"))
+			return (0);
+	return (1);
+}
+
+int		check_map(t_buf *map_buf)
+{
+	while (map_buf)
+	{
+		int start;
+		int end;
+		int actual_len;
+
+		start = skip_spaces(map_buf->str);
+		if ((end = skip_spaces_back(map_buf->str)) < 2)
+			return (0);
+		//printf("\nline:: %s\nfirst:: %d\nlast:: %d\n", map_buf->str, start, end);
+		if (!check_map_chars(map_buf->str))
+			return (0);
+		if (map_buf->str[end] != '1' || map_buf->str[start] != '1')
+			return (0);
+		actual_len = end - start + 1;
+		//printf("\nline:: %s\nlen:: %d\nfirst:: %c\nlast:: %c\n", map_buf->str, actual_len, map_buf->str[start], map_buf->str[end]);
+		map_buf =  map_buf->next;
+	}
+	return (1);
+}
+
 int 	parse_map(t_conf *conf, t_buf *map_buf)
 {
+	if (!check_map(map_buf))
+		return (0);
+	while (map_buf)
+	{
+		ft_putstr(map_buf->str);
+		ft_putstr("\n");
+		map_buf =  map_buf->next;
+	}
 	return (1);
 }
 int		parse_file(char *file, t_conf *conf)
@@ -151,16 +212,6 @@ int		parse_file(char *file, t_conf *conf)
 	}
 	if (!r || !parse_map(conf, map_buf))
 		return (ft_buf_clear(&map_buf));
-	tnp = map_buf;
-	while (tnp)
-	{
-		ft_putstr(tnp->str);
-				ft_putstr("\n");
-
-		tnp = tnp->next;
-	}
-	ft_putstr("DONE\n");
-
 	close(fd);
 	ft_buf_clear(&map_buf);
 	return (1);
